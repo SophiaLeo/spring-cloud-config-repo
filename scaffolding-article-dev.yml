@@ -10,7 +10,7 @@ spring:
       authentication-database: admin
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:  jdbc:mysql://localhost:3306/scaffolding_article?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    url:  jdbc:mysql://localhost:3306/scaffolding_article?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
     name: article
@@ -32,20 +32,14 @@ spring:
   redis:
     host: 192.168.153.128
     port: 6379
-    #    cluster:
-    #      nodes: 192.168.0.111:6379,192.168.0.111:6380,192.168.0.112:6379,192.168.0.112:6380,192.168.0.113:6379,192.168.0.113:
     timeout: 10000
     database: 0
     password:
     jedis:
       pool:
-        # 连接池中的最小空闲连接
         min-idle: 20
-        # 连接池中的最大空闲连接
         max-idle: 100
-        # 连接池最大连接数
         max-active: 300
-        #最大阻塞等待时间(负数表示没限制)
         max-wait: -1
     lettuce:
       pool:
@@ -65,8 +59,8 @@ mybatis-plus:
       logic-delete-value: 0
 eureka:
   client:
-    register-with-eureka: true #把本服务也注册到注册中心，从注册中心的服务列表中可以看到本服务
-    fetch-registry: true #从注册中心拉取服务列表
+    register-with-eureka: true
+    fetch-registry: true
     serviceUrl:
       defaultZone: http://${eurekaUserName}:${eurekaPassWord}@peer1:8761/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer2:8762/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer3:8763/eureka/
   instance:
