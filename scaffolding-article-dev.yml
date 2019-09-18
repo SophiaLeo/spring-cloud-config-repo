@@ -62,7 +62,7 @@ swagger:
   url: LHLLAB
   email: xxx@gmail.com
   title:  scaffolding-article
-  terms-of-service-url: https://github.com/412Aomr
+  terms-of-service-url: https://github.com/SophiaLeo
   license:  apach 2.0
   licenseUrl:  www.amor.com
   version:  1.0
@@ -74,7 +74,10 @@ management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
   security:
     enabled: false
-    
+
