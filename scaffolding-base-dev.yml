@@ -54,18 +54,6 @@ mybatis-plus:
       #逻辑删除配置
       logic-not-delete-value: 1 #删除前
       logic-delete-value: 0  #删除后
-eureka:
-  client:
-    register-with-eureka: true #把本服务也注册到注册中心，从注册中心的服务列表中可以看到本服务
-    fetch-registry: true #从注册中心拉取服务列表
-    serviceUrl:
-      defaultZone: http://${eurekaUserName}:${eurekaPassWord}@peer1:8761/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer2:8762/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer3:8763/eureka/
-  instance:
-    prefer‐ip‐address: true
-    status-page-url-path: /actuator/info
-    health-check-url-path: /actuator/health
-eurekaUserName: amor
-eurekaPassWord: amor
 swagger:
   name: LHL
   url: LHLLAB
