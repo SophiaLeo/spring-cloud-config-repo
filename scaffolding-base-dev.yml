@@ -1,0 +1,82 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: scaffolding-base
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      #格式化输出
+      indent_output: true
+      #忽略无法转换的对象
+      fail_on_empty_beans: false
+    #设置空如何序列化
+    #default-property-inclusion: non_null
+    defaultPropertyInclusion: NON_EMPTY
+    deserialization:
+      #允许对象忽略json中不存在的属性
+      fail_on_unknown_properties: false
+    parser:
+      #允许出现特殊字符和转义符
+      allow_unquoted_control_chars: true
+      #允许出现单引号
+      allow_single_quotes: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/scaffolding_base?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    username: root
+    password: root
+    name: base
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    max-wait: 30000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: select '1' from dual
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-open-prepared-statements: 20
+    max-pool-prepared-statement-per-connection-size: 20
+#    filters: stat,wall,log4j
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.amor.base.entity  #扫描实体类,配置xml的别名
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #逻辑删除配置
+      logic-not-delete-value: 1 #删除前
+      logic-delete-value: 0  #删除后
+eureka:
+  client:
+    register-with-eureka: true #把本服务也注册到注册中心，从注册中心的服务列表中可以看到本服务
+    fetch-registry: true #从注册中心拉取服务列表
+    serviceUrl:
+      defaultZone: http://${eurekaUserName}:${eurekaPassWord}@peer1:8761/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer2:8762/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer3:8763/eureka/
+  instance:
+    prefer‐ip‐address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+swagger:
+  name: LHL
+  url: LHLLAB
+  email: xxx@gmail.com
+  title:  scaffolding-base
+  terms-of-service-url: https://github.com/412Aomr
+  license:  apach 2.0
+  licenseUrl:  www.amor.com
+  version:  1.0
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  security:
+    enabled: false
