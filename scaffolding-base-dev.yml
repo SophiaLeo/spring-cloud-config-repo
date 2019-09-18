@@ -55,7 +55,7 @@ mybatis-plus:
       logic-not-delete-value: 1 #删除前
       logic-delete-value: 0  #删除后
 swagger:
-  name: Sophia
+  name: LHL
   url: LHLLAB
   email: xxx@gmail.com
   title:  scaffolding-base
