@@ -16,7 +16,7 @@ spring:
     name: base
     type: com.alibaba.druid.pool.DruidDataSource
     initial-size: 1
-    max-active: 20
+    max-active: 50
     min-idle: 1
     max-wait: 60000
     time-between-eviction-runs-millis: 60000
