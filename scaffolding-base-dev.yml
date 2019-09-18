@@ -58,8 +58,8 @@ swagger:
   name: LHL
   url: LHLLAB
   email: xxx@gmail.com
-  title:  scaffolding-base
-  terms-of-service-url: https://github.com/SophiaLeo
+  title:  scaffolding-base-test
+  terms-of-service-url: https://github.com/412Aomr
   license:  apach 2.0
   licenseUrl:  www.amor.com
   version:  1.0
