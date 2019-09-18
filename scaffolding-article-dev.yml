@@ -10,14 +10,14 @@ spring:
       authentication-database: admin
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:  jdbc:mysql://localhost:3306/scaffolding_article?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    url:  jdbc:mysql://localhost:3306/scaffolding_article?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
     name: article
     type: com.alibaba.druid.pool.DruidDataSource
     initial-size: 5
     min-idle: 5
-    max-active: 20
+    max-active: 100
     max-wait: 30000
     time-between-eviction-runs-millis: 60000
     min-evictable-idle-time-millis: 300000
@@ -28,15 +28,12 @@ spring:
     pool-prepared-statements: true
     max-open-prepared-statements: 20
     max-pool-prepared-statement-per-connection-size: 20
-#    filters: stat,wall,log4j
   redis:
     host: 192.168.153.128
     port: 6379
-    #    cluster:
-    #      nodes: 192.168.0.111:6379,192.168.0.111:6380,192.168.0.112:6379,192.168.0.112:6380,192.168.0.113:6379,192.168.0.113:
     timeout: 10000
     database: 0
-    password: 
+    password:
     lettuce:
       pool:
         max-active: 300
@@ -63,9 +60,9 @@ swagger:
   licenseUrl:  www.amor.com
   version:  1.0
 jwt:
- config:
-  key: amor
-  ttl: 36000
+  config:
+    key: amor
+    ttl: 36000
 management:
   endpoints:
     web:
