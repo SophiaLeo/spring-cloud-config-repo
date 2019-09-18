@@ -55,10 +55,10 @@ mybatis-plus:
       logic-not-delete-value: 1 #删除前
       logic-delete-value: 0  #删除后
 swagger:
-  name: LHL
+  name: Sophia
   url: LHLLAB
   email: xxx@gmail.com
-  title:  scaffolding-base-test
+  title:  scaffolding-base
   terms-of-service-url: https://github.com/SophiaLeo
   license:  apach 2.0
   licenseUrl:  www.amor.com
