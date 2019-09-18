@@ -8,9 +8,9 @@ spring:
       uri: mongodb://root:root@192.168.153.128:27017/
       database: recruitdb
       authentication-database: admin
-  datasource:
+  datasource: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url:  jdbc:mysql://localhost:3306/scaffolding_base?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    url:  jdbc:mysql://localhost:3306/scaffolding_article?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
     username: root
     password: root
     name: article
