@@ -26,7 +26,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url:  jdbc:mysql://localhost:3306/scaffolding_base?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
     username: root
-    password: 121345
+    password: root
     name: base
     type: com.alibaba.druid.pool.DruidDataSource
     initial-size: 5
@@ -58,7 +58,7 @@ swagger:
   name: LHL
   url: LHLLAB
   email: xxx@gmail.com
-  title:  scaffolding-base
+  title:  scaffolding-base-test
   terms-of-service-url: https://github.com/SophiaLeo
   license:  apach 2.0
   licenseUrl:  www.amor.com
