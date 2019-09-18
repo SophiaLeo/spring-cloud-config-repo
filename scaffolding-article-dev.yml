@@ -28,7 +28,7 @@ spring:
     pool-prepared-statements: true
     max-open-prepared-statements: 20
     max-pool-prepared-statement-per-connection-size: 20
-  redis:
+  redis: 
     host: 192.168.153.128
     port: 6379
     timeout: 10000
@@ -36,9 +36,13 @@ spring:
     password:
     jedis:
       pool:
+        # 连接池中的最小空闲连接
         min-idle: 20
+        # 连接池中的最大空闲连接
         max-idle: 100
+        # 连接池最大连接数
         max-active: 300
+        #最大阻塞等待时间(负数表示没限制)
         max-wait: -1
     lettuce:
       pool:
@@ -61,14 +65,14 @@ swagger:
   url: LHLLAB
   email: xxx@gmail.com
   title:  scaffolding-article
-  terms-of-service-url: https://github.com/SophiaLeo
+  terms-of-service-url: https://github.com/412Aomr
   license:  apach 2.0
   licenseUrl:  www.amor.com
   version:  1.0
 jwt:
- config:
-  key: amor
-  ttl: 36000
+  config:
+    key: amor
+    ttl: 36000
 management:
   endpoints:
     web:
@@ -79,4 +83,3 @@ management:
       enabled: true
   security:
     enabled: false
-
