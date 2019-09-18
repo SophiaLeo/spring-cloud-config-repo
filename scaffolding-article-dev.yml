@@ -57,18 +57,6 @@ mybatis-plus:
     db-config:
       logic-not-delete-value: 1
       logic-delete-value: 0
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://${eurekaUserName}:${eurekaPassWord}@peer1:8761/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer2:8762/eureka/,http://${eurekaUserName}:${eurekaPassWord}@peer3:8763/eureka/
-  instance:
-    prefer‐ip‐address: true
-    status-page-url-path: /actuator/info
-    health-check-url-path: /actuator/health
-eurekaUserName: amor
-eurekaPassWord: amor
 swagger:
   name: LHL
   url: LHLLAB
