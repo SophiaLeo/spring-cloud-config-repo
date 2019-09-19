@@ -59,7 +59,7 @@ feign:
     response:
       enabled: true
   hystrix:
-    enabled: true 
+    enabled: true
 scaffolding-base:
   ribbon:
     # 配置首台服务器重试1次
