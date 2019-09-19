@@ -22,6 +22,8 @@ spring:
       allow_unquoted_control_chars: true
       #允许出现单引号
       allow_single_quotes: true
+elasticsearch:
+  ip: 192.168.153.128
 swagger:
   name: LHL
   url: LHLLAB
