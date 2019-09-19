@@ -22,7 +22,7 @@ spring:
       allow_unquoted_control_chars: true
       #允许出现单引号
       allow_single_quotes: true
-elasticsearch:
+elasticsearch: 
   ip: 192.168.153.128:9200
 swagger:
   name: LHL
