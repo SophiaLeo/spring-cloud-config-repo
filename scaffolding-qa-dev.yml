@@ -1,0 +1,80 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: scaffolding-qa
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      #格式化输出
+      indent_output: true
+      #忽略无法转换的对象
+      fail_on_empty_beans: false
+    #设置空如何序列化
+    #default-property-inclusion: non_null
+    defaultPropertyInclusion: NON_EMPTY
+    deserialization:
+      #允许对象忽略json中不存在的属性
+      fail_on_unknown_properties: false
+    parser:
+      #允许出现特殊字符和转义符
+      allow_unquoted_control_chars: true
+      #允许出现单引号
+      allow_single_quotes: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/scaffolding_qa?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    username: root
+    password: root
+    name: qa
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    max-wait: 30000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: select '1' from dual
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-open-prepared-statements: 20
+    max-pool-prepared-statement-per-connection-size: 20
+#    filters: stat,wall,log4j
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.amor.qa.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-not-delete-value: 1
+      logic-delete-value: 0
+feign:
+  hystrix:
+    enabled: true
+swagger:
+  name: LHL
+  url: LHLLAB
+  email: xxx@gmail.com
+  title:  scaffolding-qa
+  terms-of-service-url: https://github.com/SophiaLeo
+  license:  apach 2.0
+  licenseUrl:  www.amor.com
+  version:  1.0
+jwt:
+  config:
+    key: amor
+    ttl: 36000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
+  security:
+    enabled: false
