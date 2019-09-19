@@ -46,3 +46,6 @@ management:
       enabled: true
   security:
     enabled: false
+  health:
+    elasticsearch:
+      enabled: false
