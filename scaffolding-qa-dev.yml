@@ -67,7 +67,7 @@ scaffolding-base:
     # 配置其他服务器重试两次
     MaxAutoRetriesNextServer: 2
     # 连接超时时间
-    ConnectTimeout: 500
+    ConnectTimeout: 5000
     # 请求处理时间
     ReadTimeout: 2000
     # 每个操作都开启重试机制
