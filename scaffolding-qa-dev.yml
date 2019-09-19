@@ -59,7 +59,7 @@ feign:
     response:
       enabled: true
   hystrix:
-    enabled: true
+    enabled: false
   client:
     config:
       scaffolding-base:
