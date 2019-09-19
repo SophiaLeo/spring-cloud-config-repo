@@ -22,8 +22,11 @@ spring:
       allow_unquoted_control_chars: true
       #允许出现单引号
       allow_single_quotes: true
-elasticsearch: 
-  ip: 192.168.153.128:9200
+elasticSearch:
+  hostlist: 192.168.153.128:9200
+  client:
+    connectNum: 10
+    connectPerRoute: 50
 swagger:
   name: LHL
   url: LHLLAB
