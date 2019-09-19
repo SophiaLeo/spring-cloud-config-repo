@@ -1,0 +1,59 @@
+server:
+  port: 9006
+spring:
+  application:
+    name: scaffolding-spit
+  data:
+    mongodb:
+      uri: mongodb://root:root@192.168.153.128:27017/
+      database: spitdb
+      authentication-database: admin
+  #      uri: mongodb://192.168.0.111:27017,192.168.0.112:27017,192.168.0.113:27017/spitdb    mongodb://连接地址:端口/数据库名
+  redis:
+    host: 192.168.153.128
+    port: 6379
+    #    cluster:
+    #      nodes: 192.168.0.111:6379,192.168.0.111:6380,192.168.0.112:6379,192.168.0.112:6380,192.168.0.113:6379,192.168.0.113:6380
+    timeout: 10000
+    database: 0
+    password:
+#    jedis:
+#      pool:
+#        # 连接池中的最小空闲连接
+#        min-idle: 20
+#        # 连接池中的最大空闲连接
+#        max-idle: 100
+#        # 连接池最大连接数
+#        max-active: 300
+#        #最大阻塞等待时间(负数表示没限制)
+#        max-wait: -1
+    lettuce:
+      pool:
+        max-active: 300
+        max-idle: 100
+        max-wait: -1
+        min-idle: 20
+      shutdown-timeout: 10000
+swagger:
+  name: LHL
+  url: LHLLAB
+  email: xxx@gmail.com
+  title:  scaffolding-spit
+  terms-of-service-url: https://github.com/SophiaLeo
+  license:  apach 2.0
+  licenseUrl:  www.amor.com
+  version:  1.0
+jwt:
+  config:
+    key: amor
+    ttl: 36000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
+  security:
+    enabled: false
