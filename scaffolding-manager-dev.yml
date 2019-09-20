@@ -1,0 +1,40 @@
+server:
+  port: 9011
+spring:
+  application:
+    name: scaffolding-manager #指定服务名
+zuul:
+  routes:
+    scaffolding-gathering: #活动
+      path: /gathering/** #配置请求URL的请求规则
+      serviceId: scaffolding-gathering #指定Eureka注册中心中的服务id
+    scaffolding-article: #文章
+      path: /article/** #配置请求URL的请求规则
+      serviceId: scaffolding-article #指定Eureka注册中心中的服务id
+    scaffolding-base: #基础
+      path: /base/** #配置请求URL的请求规则
+      serviceId: scaffolding-base #指定Eureka注册中心中的服务id
+    scaffolding-friend: #交友
+      path: /friend/** #配置请求URL的请求规则
+      serviceId: scaffolding-friend #指定Eureka注册中心中的服务id
+    scaffolding-qa: #问答
+      path: /qa/** #配置请求URL的请求规则
+      serviceId: scaffolding-qa #指定Eureka注册中心中的服务id
+    scaffolding-recruit: #招聘
+      path: /recruit/** #配置请求URL的请求规则
+      serviceId: scaffolding-recruit #指定Eureka注册中心中的服务id
+    scaffolding-spit: #吐槽
+      path: /spit/** #配置请求URL的请求规则
+      serviceId: scaffolding-spit #指定Eureka注册中心中的服务id
+    scaffolding-user: #用户
+      path: /user/** #配置请求URL的请求规则 management:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
+  security:
+    enabled: false
