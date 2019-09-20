@@ -41,11 +41,11 @@ zuul:
 security:
   oauth2:
     client:
-      access-token-uri: http://localhost:9013/auth/oauth/token
-      user-authorization-uri: http://localhost:9013/auth/oauth/authorize
-      client-id: scaffolding-user
+      access-token-uri: http://localhost:${server.port}/auth/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
+      client-id: web
     resource:
-      user-info-uri: http://localhost:9013/auth/api/user
+      user-info-uri:  http://localhost:${server.port}/auth/api/user
       prefer-token-info: false
 ribbon:
   ReadTimeout: 3000
