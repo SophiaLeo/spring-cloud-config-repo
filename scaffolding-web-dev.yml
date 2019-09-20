@@ -35,6 +35,34 @@ zuul:
     scaffolding-sms:
       path: /sms/**
       serviceId: scaffolding-sms
+    scaffolding-auth:
+      path: /auth/**
+      serviceId: scaffolding-auth
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:9013/auth/oauth/token
+      user-authorization-uri: http://localhost:9013/auth/oauth/authorize
+      client-id: scaffolding-user
+    resource:
+      user-info-uri: http://localhost:9013/auth/api/user
+      prefer-token-info: false
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+  MaxAutoRetries: 1
+  MaxAutoRetriesNextServer: 2
+  eureka:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3500
 jwt:
   config:
     key: amor
