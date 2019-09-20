@@ -1,0 +1,51 @@
+server: 
+  port: 9012 
+spring: 
+  application: 
+    name: scaffolding-web
+zuul:
+  routes:
+    scaffolding-gathering:
+      path: /gathering/**
+      serviceId: scaffolding-gathering
+    scaffolding-article:
+      path: /article/**
+      serviceId: scaffolding-article
+    scaffolding-base:
+      path: /base/**
+      serviceId: scaffolding-base
+    scaffolding-friend:
+      path: /friend/**
+      serviceId: scaffolding-friend
+    scaffolding-qa:
+      path: /qa/**
+      serviceId: scaffolding-qa
+    scaffolding-recruit:
+      path: /recruit/**
+      serviceId: scaffolding-recruit
+    scaffolding-spit:
+      path: /spit/**
+      serviceId: scaffolding-spit
+    scaffolding-user:
+      path: /user/**
+      serviceId: scaffolding-user
+    scaffolding-search:
+      path: /search/**
+      serviceId: scaffolding-search
+    scaffolding-sms:
+      path: /sms/**
+      serviceId: scaffolding-sms
+jwt:
+  config:
+    key: amor
+    ttl: 36000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
+  security:
+    enabled: false
