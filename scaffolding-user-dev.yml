@@ -1,0 +1,117 @@
+server:
+  port: 9008
+spring:
+  application:
+    name: scaffolding-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/scaffolding_user?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC   #mysql8
+    username: root
+    password: root
+    name: user
+    type: com.alibaba.druid.pool.DruidDataSource
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    max-wait: 30000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: select '1' from dual
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    pool-prepared-statements: true
+    max-open-prepared-statements: 20
+    max-pool-prepared-statement-per-connection-size: 20
+#    filters: stat,wall,log4j
+  redis:
+    host: 192.168.153.128
+    port: 6379
+    #    cluster:
+    #      nodes: 192.168.0.111:6379,192.168.0.111:6380,192.168.0.112:6379,192.168.0.112:6380,192.168.0.113:6379,192.168.0.113:
+    timeout: 10000
+    database: 0
+    password:
+#    jedis:
+#      pool:
+#        # 连接池中的最小空闲连接
+#        min-idle: 20
+#        # 连接池中的最大空闲连接
+#        max-idle: 100
+#        # 连接池最大连接数
+#        max-active: 300
+#        #最大阻塞等待时间(负数表示没限制)
+#        max-wait: -1
+    lettuce:
+      pool:
+        max-active: 300
+        max-idle: 100
+        max-wait: -1
+        min-idle: 20
+      shutdown-timeout: 10000
+  rabbitmq:
+    host: 192.168.153.128
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /
+    # 开启发送确认
+    publisher-confirms: true
+    # 开启发送失败退回
+    publisher-returns: true
+    listener:
+      direct:
+        acknowledge-mode: manual      # 开启ACK
+        retry:
+          enabled: true #消费者端的重试
+      simple:
+        retry:
+          enabled: true #消费者端的重试
+        acknowledge-mode: manual         # 开启ACK
+        concurrency: 10  #消费者的最小数量
+        max-concurrency: 20  #消费者的最大数量
+        prefetch: 5  #在单个请求中处理的消息个数，他应该大于等于事务数量
+        auto-startup: true  #启动时自动启动容器	true
+        default-requeue-rejected: true  #投递失败时是否重新排队
+    template:
+      reply-timeout: 10000 #超时时间
+      retry:
+        enabled: true  #设置为true的时候RabbitTemplate(生产端)能够实现重试
+        initial-interval: 1000  #第一次与第二次发布消息的时间间隔 1000
+        max-attempts: 3 #尝试发布消息的最大数量 3
+        max-interval: 10000  #尝试发布消息的最大时间间隔 10000
+        multiplier: 1.0  #上一次尝试时间间隔的乘数 1.0
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.amor.user.entity  #扫描实体类,配置xml的别名
+  configuration:
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #逻辑删除配置
+      logic-not-delete-value: 1 #删除前
+      logic-delete-value: 0  #删除后
+swagger:
+  name: LHL
+  url: LHLLAB
+  email: xxx@gmail.com
+  title:  scaffolding-user
+  terms-of-service-url: https://github.com/SophiaLeo
+  license:  apach 2.0
+  licenseUrl:  www.amor.com
+  version:  1.0
+jwt:
+  config:
+    key: amor
+    ttl: 36000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #因为springboot2.1.必须加上,支持访问/actuator/hystrix.stream
+  endpoint:
+    bus-refresh:
+      enabled: true
+  security:
+    enabled: false
