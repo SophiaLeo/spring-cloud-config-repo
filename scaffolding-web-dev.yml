@@ -4,6 +4,10 @@ spring:
   application: 
     name: scaffolding-web
 zuul:
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  sensitive-headers: 
   routes:
     scaffolding-gathering:
       path: /gathering/**
