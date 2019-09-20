@@ -28,6 +28,10 @@ zuul:
       serviceId: scaffolding-spit #指定Eureka注册中心中的服务id
     scaffolding-user: #用户
       path: /user/** #配置请求URL的请求规则 management:
+jwt:
+  config:
+    key: amor
+    ttl: 36000
 management:
   endpoints:
     web:
