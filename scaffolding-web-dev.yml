@@ -43,7 +43,8 @@ security:
     client:
       access-token-uri: http://localhost:${server.port}/auth/oauth/token
       user-authorization-uri: http://localhost:${server.port}/auth/oauth/authorize
-      client-id: web
+      client-id: amor
+      client-secret: amor_secret
     resource:
       user-info-uri:  http://localhost:${server.port}/auth/api/user
       prefer-token-info: false
